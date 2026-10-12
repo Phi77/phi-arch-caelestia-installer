@@ -45,11 +45,9 @@ read -r -p 'Keyboard layout [us]: ' KEYMAP
 KEYMAP=${KEYMAP:-us}
 [[ "$KEYMAP" =~ ^[a-zA-Z0-9_-]+$ ]] || die 'Invalid keymap.'
 read -r -s -p 'Set user password: ' USERPASS; printf '\n'
-[[ ${#USERPASS} -ge 8 ]] || die 'Use a password of at least 8 characters.'
 read -r -s -p 'Confirm user password: ' USERPASS2; printf '\n'
 [[ "$USERPASS" == "$USERPASS2" ]] || die 'Passwords do not match.'
 read -r -s -p 'Set root password: ' ROOTPASS; printf '\n'
-[[ ${#ROOTPASS} -ge 8 ]] || die 'Use a root password of at least 8 characters.'
 
 info 'Checking internet connectivity...'
 ping -c 1 -W 3 archlinux.org >/dev/null 2>&1 || warn 'Ping failed. Confirm networking and mirror access before proceeding.'
